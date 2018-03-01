@@ -1,0 +1,17 @@
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+
+:Tienda: as tienda
+:Cliente: as client
+
+
+rectangle {
+  (Leer Archivos de cliente) as (leer)
+  client --> (recibir mensaje)
+  tienda -->(leer)
+  tienda --> (agrega cliente)
+  tienda --> (contacta)
+}
+@endluml
