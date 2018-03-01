@@ -1,0 +1,60 @@
+@startuml
+class Command{
+    +virtual execute()
+}
+
+class Invoker{
+    -vector commands
+    +setCommand(Command *cmd_temp)
+    +storeAndExecute()
+}
+class LlamarCommand{
+   -cliente client_
+
+    +execute
+}
+class MensajeCommand{
+   -cliente client_
+
+    +execute
+}
+class CorreoCommand{
+    -cliente client_
+
+    +execute
+}
+class Cliente{
+    -int id
+    -string nombre
+    -string apellido
+    -string type_comm
+    -string mail
+    -string phone 
+    -string calle 
+    -string numero 
+    -string colonia 
+    -Caller *caller
+    -Receiver *re
+    +contactar()
+    +llamar()
+    +mandarSMS()
+    +mandarMail()
+}
+class Tienda{
+    -Tienda *instancia
+    -vector<Cliente> clientes
+    +getInstance()
+    +deleteInstance()
+    +readClients()
+    +contactClient()
+}
+
+
+Invoker *--> Command
+LlamarCommand --|>Command
+MensajeCommand --|>Command
+CorreoCommand --|>Command
+
+Cliente --> Invoker
+Tienda --> Cliente
+@enduml
